@@ -1,0 +1,55 @@
+package com.example;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+    
+        List<String> tareas = new ArrayList<String>();
+        Scanner sc = new Scanner(System.in);
+
+        int opcion;
+        
+
+       do {
+        
+        System.out.println("Digita alguna de las siguientes opciones: ");
+        System.out.println("[1]: Agregar nueva tarea ");
+        System.out.println("[2]: Marcar como completada la tarea ");
+        System.out.println("[3]: Mostrar tareas pendientes ");
+        System.out.println("[4]: Salir ");
+        opcion = sc.nextInt();
+
+        if(opcion == 1){
+            System.out.println("Que deseas agregar?: ");
+            String agregar = sc.next();
+            tareas.add(agregar);
+        }else if (opcion == 2) {
+            System.out.println("Que tarea haz completado? ");
+            for(int tarea = 0;  tarea < tareas.size(); tarea++){
+                int numerador = tarea + 1;
+                System.out.println("["+numerador+"] "+tareas.get(tarea)); 
+
+            }
+            System.out.println("Por favor escoge la tarea completada");
+            int opcion2 = sc.nextInt() - 1;
+
+            tareas.remove(opcion2);
+
+        }else if(opcion == 3){
+            if(tareas.isEmpty()){
+                System.out.println("La lista esta vacia por fa agrega o darle salir");
+            }else{
+                for(String tarea : tareas){
+                    System.out.println(tarea);
+                }
+            }
+        }else if(opcion > 4){
+            System.out.println("Escoge un número de las opciones!! ");
+        }
+       } while (opcion != 4);
+        System.out.println("Gracias, ten un lindo dia :)");
+    }
+}
